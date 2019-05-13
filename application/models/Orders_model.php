@@ -17,4 +17,18 @@ class Orders_model extends CI_Model {
 		return $this->db->query($sql);		
 	}
 
+	public function getOrderRequest() {
+
+		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE status = 'pending' ORDER BY id DESC";
+		return $this->db->query($sql);			
+	}
+
+	public function getSingleOrderRequest($custId) {
+
+		$id = $this->db->escape_str($custId);
+
+		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE id = ".$id;
+		return $this->db->query($sql);		
+	}
+
 }

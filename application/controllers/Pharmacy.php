@@ -27,7 +27,7 @@ class Pharmacy extends CI_Controller {
 		$result = $this->pharmacy_model->search_pharmacy($location)->result();
 
 		foreach($result as $res) {
-			array_push($dataArr,['id' => $res->id, 'name' => $res->name, 'address' => $res->address, 'contact_number' => $res->contact_number, 'orders' => $this->pharmacy_model->getOrders($res->id)->num_rows()]);
+			array_push($dataArr,['id' => $res->id, 'name' => $res->name, 'address' => $res->address, 'contact_number' => $res->contact_number, 'facebook_id' => $res->facebook_id]);
 		}
  		
  		echo json_encode($dataArr);
@@ -48,17 +48,18 @@ class Pharmacy extends CI_Controller {
  		echo json_encode($dataArr);
  	}
 
- 	public function list() {
+ 	public function list_pharma() {
 
  		$dataArr = [];
- 		$result = $this->pharmacy_model->list()->result();
+ 		$result = $this->pharmacy_model->list_pharma()->result();
  		
  		foreach($result as $res) {
- 			array_push($dataArr,["id" => $res->id,"text" => $res->name." (".$res->address.")"]);
+ 			array_push($dataArr,["id" => $res->id,"text" => $res->name." (".$res->address.")", "facebookId" => $res->facebook_id]);
  		}
 
  		echo json_encode($dataArr);
 
  	}
+
 
 }

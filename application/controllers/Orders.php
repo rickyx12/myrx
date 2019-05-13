@@ -65,4 +65,24 @@ class Orders extends CI_Controller {
  	}
 
 
+ 	public function getOrderRequest() {
+
+ 		$ordersArr = [];
+ 		$orders = $this->orders_model->getOrderRequest()->result();
+
+ 		foreach($orders as $order) {
+
+ 			array_push($ordersArr,array(
+ 				"id" => $order->id,
+ 				"custId" => $order->customer,
+ 				"customer" => $this->utility_model->selectNow('myrx_customer','name','id',$order->customer)->row()->name ,
+ 				"contact" => $this->utility_model->selectNow('myrx_customer','contact_number','id',$order->customer)->row()->contact_number,
+ 				"facebook" => $this->utility_model->selectNow('myrx_customer','facebook_url','id',$order->customer)->row()->facebook_url,
+ 				"address" => $this->utility_model->selectNow('myrx_customer','address','id',$order->customer)->row()->address
+ 				));
+ 		}
+
+ 		echo json_encode($ordersArr);
+ 	}
+
 }

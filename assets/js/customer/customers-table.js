@@ -15,9 +15,8 @@ $.ajax({
 				var custId = $('#orderBtn'+val.id).data('customerid');
 				var custName = $('#orderBtn'+val.id).data('customername');
 
+				$("<form action='"+base_url+"Customer/addOrderPage' method='POST'><input type='hidden' name='custId' value='"+custId+"'></form>").appendTo('body').submit();
 
-				$('#ordering-customer').val(custId);
-				$('#customerName').html(custName);
 			});
 
 
@@ -31,7 +30,7 @@ $.ajax({
 				}else{
 					html += "<td></td>";
 				}
-				html += "<td><button id='orderBtn"+val.id+"' class='btn btn-primary' data-customername='"+val.name+"' data-customerid='"+val.id+"' data-toggle='modal' data-target='#orderModal'><i class='fa fa-plus'></i></button></td>";
+				html += "<td><button id='orderBtn"+val.id+"' class='btn btn-primary' data-customername='"+val.name+"' data-customerid='"+val.id+"'><i class='fa fa-plus'></i></button></td>";
 			html += "</tr>";
 				
 			});
@@ -55,7 +54,7 @@ var toolbarOptions = [
 
 
 $.ajax({
-	url:base_url+"Pharmacy/list",
+	url:base_url+"Pharmacy/list_pharma",
 	method:'GET',
 	success:function(result) {
 

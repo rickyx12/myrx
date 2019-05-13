@@ -16,9 +16,9 @@ class Pharmacy_model extends CI_Model {
         }
 
 
-        public function list() {
+        public function list_pharma() {
 
-            $sql = "SELECT * FROM myrx_pharmacy";
+            $sql = "SELECT * FROM myrx_pharmacy WHERE active = 1";
             return $this->db->query($sql);         	
         }
 

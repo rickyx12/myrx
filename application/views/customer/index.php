@@ -81,54 +81,6 @@
   </div>
 </div>
 
-
-
-<!-- Modal -->
-<div id="orderModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="customerName" class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-      	<input type="hidden" id="ordering-customer">
-      	<div class="row mb-2">
-      		<div class="col-md-12">
-      			<select class="pharmacy-list" style="width: 500px;">
-      				<option></option>
-      			</select>
-      		</div>
-      	</div>
-      	<div class="row mb-2">
-      		<div class="col-md-6">
-      			<select id="deliveryType" class="form-control">
-      				<option>Scheduled Delivery</option>
-      				<option>On-Demand Delivery</option>
-      				<option>Regional Delivery</option>
-      			</select>
-      		</div>
-      	</div>
-      	<div class="row mb-2">
-      		<div class="col-md-6">
-      			<input type="text" id="deliveryTime" class="form-control" autocomplete="off" placeholder="Delivery Time">
-      		</div>
-      	</div>
-        <div id="orderField" style="height: 400px;"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" id="orderModalBtn" class="btn btn-success">Proceed</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-
-
 	</div>
 
   </div>

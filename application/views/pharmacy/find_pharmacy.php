@@ -26,7 +26,6 @@
 					<th>Name</th>
 					<th>Address</th>
 					<th>Contact#</th>
-					<th>Orders</th>
 					<th></th>
 				</thead>
 				<tbody id="searchPharmaciesTbl"></tbody>

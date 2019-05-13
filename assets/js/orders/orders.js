@@ -14,7 +14,7 @@ var toolbarOptions = [
 $('.pharmacy-list').select2(); 
 
 $.ajax({
-	url:base_url+"Orders/getPendingOrders",
+	url:base_url+"Orders/getOrderRequest",
 	method:'GET',
 	success:function(result) {
 
@@ -22,36 +22,20 @@ $.ajax({
 
 		$.each(JSON.parse(result),function(index,val) {
 
+
 			$(document).on('click','#orderBtn'+val.id,function(){
 
-				var customer = $('#orderBtn'+val.id).data('customer');
-				var pharmacy = $('#orderBtn'+val.id).data('pharmacy');
-				var deliveryType = $('#orderBtn'+val.id).data('deliverytype');
-				var deliveryTime = $('#orderBtn'+val.id).data('deliverytime');
-				var order = $('#orderBtn'+val.id).data('content');
+				var id = $('#orderBtn'+val.id).data('id');
 
-				$('#customerName').html(customer);
-				$('.pharmacy-list').html("<option>"+pharmacy+"</option>");
-				$('#deliveryType').html("<option>"+deliveryType+"</option>");
-				quill.setContents(order);
-
-				if(deliveryType == "On-Demand Delivery") {
-					$('#deliveryTime').show();
-					$('#deliveryTime').val(deliveryTime);
-				}else {
-					$('#deliveryTime').hide();
-				}
+				$("<form action='"+base_url+"Customer/viewOrderPage' method='POST'><input type='hidden' name='id' value='"+id+"'></form>").appendTo('body').submit();
 
 			});
 
+
+
 			html += "<tr>";
 
-				if(val.deliveryType == "On-Demand Delivery") {
-					html += "<td>"+val.customer+"<br><span style='font-size:13px; color:red;'>(Deliver @ "+val.deliveryTime+")</span></td>";
-				}else {
-					html += "<td>"+val.customer+"</td>";
-				}
-
+				html += "<td>"+val.customer+"</td>";
 				html += "<td>"+val.pharmacy+"</td>";
 				html += "<td>"+val.contact+"</td>";
 
@@ -62,7 +46,7 @@ $.ajax({
 				}
 
 				html += "<td>"+val.address+"</td>";
-				html += "<td><button id='orderBtn"+val.id+"' class='btn btn-primary' data-customer='"+val.customer+"' data-pharmacy='"+val.pharmacy+"' data-deliverytype='"+val.deliveryType+"' data-deliverytime='"+val.deliveryTime+"' data-content='"+val.order+"' data-toggle='modal' data-target='#orderModal'><i class='fa fa-list'></i></button></td>";
+				html += "<td><button id='orderBtn"+val.id+"' class='btn btn-primary' data-id='"+val.id+"'><i class='fa fa-list'></i></button></td>";
 			html += "</tr>";
 
 		});
