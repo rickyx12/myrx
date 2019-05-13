@@ -53,7 +53,7 @@ $('#broadcastBtn').click(function(){
 					"attachment":{
 						"type":"image",
 						"payload":{
-							"url":image_url+'/rx/'+rxFile,
+							"url":base_url+'/rx/'+rxFile,
 							"is_reusable":true
 						}
 					}
@@ -74,26 +74,7 @@ $('#broadcastBtn').click(function(){
 		
 		}else {
 
-
-			var data = {
-				"recipient":{
-					"id":fbId[i]
-				},
-				"message":{
-					"text":message
-				}
-			};
-
-			$.ajax({
-				url:"https://graph.facebook.com/v2.6/me/messages?access_token="+access_token,
-				type:"POST",
-				contentType: "application/json",
-				data:data,
-				success:function(result){
-					console.log(result);
-				}
-			});
-
+			sendMessage(fbId[i],message);
 		}
 
 	}
