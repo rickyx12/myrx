@@ -33,7 +33,7 @@ class Customer extends CI_Controller {
  	public function orderRequest() {
 
                 // $config['upload_path']          = 'C:/xampp/htdocs/myrx/uploads/rx';
-                $config['upload_path']          = 'app/uploads/rx';
+                $config['upload_path']          = '../uploads/rx';
                 $config['allowed_types']        = 'jpg|png';
                 $config['max_size']             = 25000;
                 $config['max_width']            = 500;
