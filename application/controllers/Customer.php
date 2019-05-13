@@ -55,7 +55,8 @@ class Customer extends CI_Controller {
                 	$data = array($custId,$filename,$message,date('Y-m-d H:i:s'));
                 	$this->customer_model->addOrderRequest($data);
 
-                	echo json_encode(array("status" => "success", "message" => $this->upload->data()));
+                	// echo json_encode(array("status" => "success", "message" => "Sucessfully Added"));
+                        print_r($this->upload->data());
                 }
  	}
 
