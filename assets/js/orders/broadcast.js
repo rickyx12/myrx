@@ -1,7 +1,6 @@
 
 var base_url = $('body').data('urlbase');
-var image_url = "https://pick-n-ride.000webhostapp.com/";
-var access_token = "EAADuLIY8BksBALxFZA9SuJ5vshC6UB1mBmbwnjie1fkf4sXXeVfmiUZAuJoZAbM5NYmyo6PMByeuUibI7vK5TAib5uGC2hzj4BfbXZAFEUlwNSZA5TcbzcnNCWTkVEqkuZAx26MkirY85dext2casBL0s4x5R9Mj9ttxpsQe1IxwZDZD";
+var access_token = "EAAR0oeXVZCIUBAIz6BrFVhAR19YZBM1pdCIL1zElT5cm0XRsgZCYI4J7pz4o31nKbM1ZBl0NTB5Fy9tQPZActJo51BjfLnDPy4lhQnIuIu2AZAQd1u5qbmXiIIM0gW359Bw3q9evvjedIM2PBJFTOuzla9YJMN6h5ZC8qVUoR3WBrJKak5ub7JW";
 
 $('#sendingLoader').hide();
 
@@ -56,7 +55,7 @@ $('#broadcastBtn').click(function() {
 						"attachment":{
 							"type":"image",
 							"payload":{
-								"url":image_url+'/rx/'+rxFile,
+								"url":image_url+'/uploads/'+rxFile,
 								"is_reusable":true
 							}
 						}
