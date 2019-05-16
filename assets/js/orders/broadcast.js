@@ -1,6 +1,6 @@
 
 var base_url = $('body').data('urlbase');
-var access_token = "EAAR0oeXVZCIUBAIz6BrFVhAR19YZBM1pdCIL1zElT5cm0XRsgZCYI4J7pz4o31nKbM1ZBl0NTB5Fy9tQPZActJo51BjfLnDPy4lhQnIuIu2AZAQd1u5qbmXiIIM0gW359Bw3q9evvjedIM2PBJFTOuzla9YJMN6h5ZC8qVUoR3WBrJKak5ub7JW";
+var access_token = "EAAR0oeXVZCIUBAD2Thkdwz7JQ0ewklwtO0H5DDHK5XPhrFj7lpN25ZCTJboPZCoirCsY1w9hytx4GnSrsanMXTNOl0MVRQVMJsLiZCH07Ookyet0BE5Gp5UXbIPoVJf8KDjykUPSEC2YsXZAxZC8BHD7xkmxXm1cDRzNbZAEgpaRAOKZBzLRkZCgr";
 
 $('#sendingLoader').hide();
 
