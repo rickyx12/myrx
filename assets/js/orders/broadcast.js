@@ -55,7 +55,7 @@ $('#broadcastBtn').click(function() {
 						"attachment":{
 							"type":"image",
 							"payload":{
-								"url":image_url+'/uploads/'+rxFile,
+								"url":base_url+'/uploads/'+rxFile,
 								"is_reusable":true
 							}
 						}
