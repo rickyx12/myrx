@@ -5,7 +5,7 @@
       <li class="breadcrumb-item">
         <a href="#">Orders</a>
       </li>
-      <li class="breadcrumb-item active">Customer Order</li>
+      <li class="breadcrumb-item active"><?= $customer ?></li>
     </ol>
 
     <div class="row">
@@ -38,6 +38,9 @@
           </div>
         </div>
       </div>
+      <div class="col-md-7 text-right">
+        <input type="checkbox" id="checkAll"> Check All
+      </div>
     </div>
 
     <div class="row">
@@ -47,7 +50,7 @@
             <th>Name</th>
             <th>Address</th>
             <th>Contact#</th>
-            <th></th>
+            <th>B</th>
           </thead>
           <tbody id="searchPharmaciesTbl"></tbody>
         </table>
@@ -55,9 +58,34 @@
     </div>
     <div class="row">
       <div class="col-md-12 text-right">
-        <button id="broadcastBtn" class="btn btn-success">Broadcast</button>
+        <button id="broadcastBtn" class="btn btn-success">(B) Broadcast</button>
       </div>
     </div>    
+
+
+  <div id="setPharmacyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Pharmacy</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="pharmacyId">
+          <input type="hidden" id="customerId" value="<?= $customerId ?>">
+          <p>Set <span id="pharmacyName"></span> as Vendor for <b><?= $customer ?></b>?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" id="setPharmacyNowBtn" class="btn btn-success">Yes</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 
 	</div>
 

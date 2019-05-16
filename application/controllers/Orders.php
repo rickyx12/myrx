@@ -8,9 +8,19 @@ class Orders extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('orders_model');
 		$this->load->model('utility_model');
+		$this->load->library('session');
+	}
+
+	private function isLogged() {
+
+		if(!$this->session->has_userdata('id')) {
+			redirect('Account/login');
+		}
 	}
 
 	public function index() {
+
+		$this->isLogged();
 
 		$data = array("page" => "orders-nav");
 
@@ -20,6 +30,8 @@ class Orders extends CI_Controller {
 	}
 
  	public function add() {
+
+ 		$this->isLogged();
 
  		$customer = $this->input->post('customer');
  		$pharmacy = $this->input->post('pharmacy');
@@ -42,6 +54,8 @@ class Orders extends CI_Controller {
  	}
 
  	public function getPendingOrders() {
+
+ 		$this->isLogged();
 
  		$ordersArr = [];
  		$pendingOrders = $this->orders_model->getPendingOrders()->result();
@@ -67,10 +81,19 @@ class Orders extends CI_Controller {
 
  	public function getOrderRequest() {
 
+ 		$this->isLogged();
+
  		$ordersArr = [];
  		$orders = $this->orders_model->getOrderRequest()->result();
+ 		$pharmacy = null;
 
  		foreach($orders as $order) {
+
+ 			if($this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()) {
+ 				$pharmacy = $this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()->name;
+ 			}else {
+ 				$pharmacy = "";
+ 			}
 
  			array_push($ordersArr,array(
  				"id" => $order->id,
@@ -78,11 +101,35 @@ class Orders extends CI_Controller {
  				"customer" => $this->utility_model->selectNow('myrx_customer','name','id',$order->customer)->row()->name ,
  				"contact" => $this->utility_model->selectNow('myrx_customer','contact_number','id',$order->customer)->row()->contact_number,
  				"facebook" => $this->utility_model->selectNow('myrx_customer','facebook_url','id',$order->customer)->row()->facebook_url,
- 				"address" => $this->utility_model->selectNow('myrx_customer','address','id',$order->customer)->row()->address
+ 				"address" => $this->utility_model->selectNow('myrx_customer','address','id',$order->customer)->row()->address,
+ 				"pharmacy" => $pharmacy
  				));
  		}
 
  		echo json_encode($ordersArr);
+ 	}
+
+ 	public function setPharmacy() {
+
+ 		$this->isLogged();
+
+ 		$customerId = $this->input->post('customerId');
+ 		$pharmacyId = $this->input->post('pharmacyId');
+
+ 		$this->orders_model->setPharmacy($pharmacyId,$customerId);
+
+ 		echo json_encode(array('status' => 'okay', 'message' => 'Pharmacy successfully added'));
+ 	}
+
+ 	public function delete() {
+
+ 		$this->isLogged();
+
+ 		$id = $this->input->post('orderId');
+
+ 		$this->orders_model->delete(array($id));
+
+ 		echo json_encode(array('status' => 'okay', 'message' => 'Successfully Deleted.'));
  	}
 
 }

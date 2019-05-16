@@ -8,9 +8,22 @@ class Customer extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('customer_model');
                 $this->load->model('orders_model');
+                $this->load->model('utility_model');
+                $this->load->library('session');
 	}
 
+
+        private function isLogged() {
+
+                if(!$this->session->has_userdata('id')) {
+                        redirect('Account/login');
+                }
+
+        }
+
  	public function index() {
+
+                $this->isLogged();
 
  		$data = array("page" => "customer-nav");
 
@@ -22,6 +35,8 @@ class Customer extends CI_Controller {
 
  	public function addOrderPage() {
 
+                $this->isLogged();
+
  		$data = array("page" => "customer-nav");
 
  		$this->load->view('includes/header.php',$data);
@@ -32,8 +47,10 @@ class Customer extends CI_Controller {
 
  	public function orderRequest() {
 
+                $this->isLogged();
+
                 // $config['upload_path']          = 'C:/xampp/htdocs/myrx/uploads/rx';
-                $config['upload_path']          = '/app/uploads/rx/';
+                $config['upload_path']          = './uploads/rx/';
                 $config['allowed_types']        = 'jpg|png';
                 $config['max_size']             = 25000;
                 $config['max_width']            = 500;
@@ -53,14 +70,16 @@ class Customer extends CI_Controller {
                 	$filename = $this->upload->data()['file_name'];
 
                 	$data = array($custId,$filename,$message,date('Y-m-d H:i:s'));
-                	$this->customer_model->addOrderRequest($data);
+                	$lastInsertedId = $this->customer_model->addOrderRequest($data);
 
-                	// echo json_encode(array("status" => "success", "message" => "Sucessfully Added"));
-                        print_r($this->upload->data());
+                	echo json_encode(array("status" => "success", "message" => "Sucessfully Added","orderId" => $lastInsertedId));
+                        // print_r($this->upload->data());
                 }
  	}
 
  	public function add() {
+
+                $this->isLogged();
 
  		$name = $this->input->post('name');
  		$address = $this->input->post('address');
@@ -83,12 +102,16 @@ class Customer extends CI_Controller {
 
  	public function latest() {
 
+                $this->isLogged();
+
  		$customers = $this->customer_model->getCustomers()->result();
 
  		echo json_encode($customers);
  	}
 
  	public function search() {
+
+                $this->isLogged();
 
  		$name = $this->input->post('name');
 
@@ -99,11 +122,16 @@ class Customer extends CI_Controller {
 
         public function viewOrderPage() {
 
+                $this->isLogged();
+
                 $id = $this->input->post('id');
+                $customerId = $this->utility_model->selectNow('myrx_order_request','customer','id',$id)->row()->customer;
+
 
                 $orderRequest = $this->orders_model->getSingleOrderRequest($id)->row();
+                $customer = $this->utility_model->selectNow('myrx_customer','name','id',$customerId)->row()->name;
 
-                $data = array("page" => "orders-nav", "data" => $orderRequest);
+                $data = array("page" => "orders-nav", "data" => $orderRequest, "customer" => $customer, "customerId" => $customerId);
 
                 $this->load->view('includes/header.php',$data);
                 $this->load->view('customer/view-order');

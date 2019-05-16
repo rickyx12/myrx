@@ -35,7 +35,8 @@ class Customer_model extends CI_Model {
 
 	public function addOrderRequest($data) {
 		$sql = "INSERT INTO myrx_order_request(customer,rx,message,details) VALUES (?,?,?,?)";
-		$this->db->query($sql, $data);		
+		$this->db->query($sql, $data);
+		return $this->db->insert_id();		
 	}
 
 }

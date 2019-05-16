@@ -5,7 +5,6 @@
       <li class="breadcrumb-item">
         <a href="#">Pharmacy</a>
       </li>
-      <li class="breadcrumb-item active">Locations</li>
     </ol>
 
  	<div class="row">
@@ -13,9 +12,12 @@
 			<div class="input-group mb-3">
 			  <input type="text" id="pharmacyLocation" class="form-control" placeholder="Pharmacy around vicinity" aria-label="Recipient's username" aria-describedby="button-addon2">
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" type="button" id="locationSearchBtn">Search</button>
+			    <button class="btn btn-outline-secondary" type="button" id="locationSearchBtn1">Search</button>
 			  </div>
 			</div>
+		</div>
+		<div class="col-md-7 text-right">
+			<button class="btn btn-success" data-toggle="modal" data-target="#newPharmacyModal">New <i class="fa fa-plus"></i></button>
 		</div>
 	</div>
 
@@ -26,16 +28,11 @@
 					<th>Name</th>
 					<th>Address</th>
 					<th>Contact#</th>
-					<th></th>
 				</thead>
 				<tbody id="searchPharmaciesTbl"></tbody>
 			</table>
 		</div>
 		<div class="col-md-4">
-			<textarea class="form-control" rows="4" cols="47"></textarea>
-			<div class="text-right mt-1">
-				<button class="btn btn-primary">Send</button>
-			</div>
 		</div>
 	</div>
 
@@ -71,7 +68,50 @@
 	  </div>
 	</div>
 
+
+	<!-- Modal -->
+	<div id="newPharmacyModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">New Pharmacy</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Name</label>
+	        	<input type="text" id="name" class="form-control">
+	        </div>
+	        <div class="form-group">
+	        	<label>Address</label>
+	        	<input type="text" id="address" class="form-control">
+	        </div>
+	        <div class="form-group">
+	        	<label>Contact#</label>
+	        	<input type="text" id="contactNumber" class="form-control">
+	        </div>
+	        <div class="form-group">
+	        	<label>Contact Person</label>
+	        	<input type="text" id="contactPerson" class="form-control">
+	        </div>
+	        <div class="form-group">
+	        	<label>Facebook ID</label>
+	        	<input type="text" id="facebookId" class="form-control">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="button" id="addPharmacyBtn" class="btn btn-success">Proceed</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
   </div>
  </div>
 
  <script src="<?= base_url('assets/js/pharmacy/search.js') ?>"></script>
+ <script src="<?= base_url('assets/js/pharmacy/add-pharmacy.js') ?>"></script>

@@ -26,7 +26,12 @@ $('#addOrderBtn').click(function(){
         	var res = JSON.parse(result);
 
         	if(res.status == 'success') {
-        		swal('Success!',res.message,'success');
+        		swal('Success!',res.message,'success').then(() => {
+
+                    var orderId = JSON.parse(result).orderId;
+
+                    $("<form action='"+base_url+"Customer/viewOrderPage' method='POST'><input type='hidden' name='id' value='"+orderId+"'></form>").appendTo('body').submit();
+                });
         	}else {
         		swal('Error!',res.message,'error');
         	}

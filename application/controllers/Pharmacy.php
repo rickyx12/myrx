@@ -8,9 +8,21 @@ class Pharmacy extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('pharmacy_model');
 		$this->load->model('customer_model');
+		$this->load->library('session');
+	}
+
+
+	private function isLogged() {
+
+		if(!$this->session->has_userdata('id')) {
+			redirect('Account/login');
+		}
+
 	}
 
  	public function find() {
+
+ 		$this->isLogged();
 
  		$data = array("page" => "pharmacy-nav");
 
@@ -21,6 +33,8 @@ class Pharmacy extends CI_Controller {
  	}
 
  	public function search() {
+
+ 		$this->isLogged();
 
  		$dataArr = [];
  		$location = $this->input->post('location');
@@ -36,6 +50,8 @@ class Pharmacy extends CI_Controller {
 
  	public function getOrders() {
 
+ 		$this->isLogged();
+
  		$dataArr = [];
  		$pharmacyId = $this->input->post('pharmacyId');
  		$result = $this->pharmacy_model->getOrders($pharmacyId)->result();
@@ -50,6 +66,8 @@ class Pharmacy extends CI_Controller {
 
  	public function list_pharma() {
 
+ 		$this->isLogged();
+
  		$dataArr = [];
  		$result = $this->pharmacy_model->list_pharma()->result();
  		
@@ -59,6 +77,30 @@ class Pharmacy extends CI_Controller {
 
  		echo json_encode($dataArr);
 
+ 	}
+
+ 	public function add() {
+
+ 		$this->isLogged();
+
+ 		$name = $this->input->post('name');
+ 		$address = $this->input->post('address');
+ 		$contactNumber = $this->input->post('contactNumber');
+ 		$contactPerson = $this->input->post('contactPerson');
+ 		$facebookId = $this->input->post('facebookId');
+
+ 		$data = array(
+ 			$name,
+ 			$address,
+ 			$contactNumber,
+ 			$contactPerson,
+ 			$facebookId,
+ 			date("Y-m-d H:i:s")
+ 		);
+
+ 		$this->pharmacy_model->add($data);
+
+ 		echo json_encode(array('status' => 'okay','message' => 'Successfully Added!'));
  	}
 
 

@@ -6,6 +6,10 @@ class Pharmacy_model extends CI_Model {
                 $this->load->database();
         }
 
+        public function add($data) {
+            $sql = "INSERT INTO myrx_pharmacy(name,address,contact_number,contact_person,facebook_id,added) VALUES (?,?,?,?,?,?)";
+            $this->db->query($sql, $data);  
+        }
 
         public function search_pharmacy($location) {
                 
