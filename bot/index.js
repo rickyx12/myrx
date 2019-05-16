@@ -6,28 +6,23 @@ const
   bodyParser = require('body-parser'),
   request = require('request'),
   fetch = require('node-fetch'),
+  fs = require('fs'),
+  https = require('https'),
   // dataUrl = "https://mindanaodailymirror.ph/index.php",
   accessToken = "EAAR0oeXVZCIUBAIz6BrFVhAR19YZBM1pdCIL1zElT5cm0XRsgZCYI4J7pz4o31nKbM1ZBl0NTB5Fy9tQPZActJo51BjfLnDPy4lhQnIuIu2AZAQd1u5qbmXiIIM0gW359Bw3q9evvjedIM2PBJFTOuzla9YJMN6h5ZC8qVUoR3WBrJKak5ub7JW",
   app = express().use(bodyParser.json()); // creates express http server
 
-// const admin = require('firebase-admin');
 
-// var serviceAccount = require('./assets/pnr-api-d8a87f8bb318.json');
-
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
-
-// var db = admin.firestore();
-
-
-// Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+  https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/myrxph.space/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/myrxph.space/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/myrxph.space/chain.pem'),
+  }, app).listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Start node server
-app.listen( app.get( 'port' ), function() {
-  console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
+// app.listen( app.get( 'port' ), function() {
+//   console.log( 'Node server is running on port ' + app.get( 'port' ));
+//   });
 
 
 
@@ -49,17 +44,17 @@ app.post('/webhook', (req, res) => {
 
 
       // Get the sender PSID
-      let sender_psid = webhook_event.sender.id;
-      console.log('Sender PSID: ' + sender_psid);
+      // let sender_psid = webhook_event.sender.id;
+      // console.log('Sender PSID: ' + sender_psid);
 
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
-      if (webhook_event.message) {
-        handleMessage(sender_psid, webhook_event.message);        
-      } else if (webhook_event.postback) {
-        handlePostback(sender_psid, webhook_event.postback);
-      }
+      // if (webhook_event.message) {
+      //   handleMessage(sender_psid, webhook_event.message);        
+      // } else if (webhook_event.postback) {
+      //   handlePostback(sender_psid, webhook_event.postback);
+      // }
 
     });
 
