@@ -11,6 +11,9 @@
 
   <title>MyRx</title>
 
+
+  <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
+  <link rel="icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">  
   <!-- Custom fonts for this template-->
   <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
 

@@ -11,6 +11,9 @@
 
   <title>MyRx</title>
 
+  <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
+  <link rel="icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
+
   <!-- Custom fonts for this template-->
   <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
 
@@ -27,7 +30,6 @@
   <script src="<?= base_url('assets/quill/quill.js') ?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
 
 <body id="page-top" data-urlbase="<?= base_url() ?>">

@@ -11,7 +11,8 @@
 
   <title>MyRx Registration</title>
 
-
+  <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
+  <link rel="icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets/css/sb-admin.css') ?>" rel="stylesheet">
