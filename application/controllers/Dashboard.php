@@ -6,12 +6,23 @@ class Dashboard extends CI_Controller {
  	public function __construct() {
  		parent::__construct();
  		$this->load->helper('url');
+ 		$this->load->model('orders_model');
  	}
 
 	public function index()
 	{
 
- 		$data = array("page" => "dashboard-nav");
+		$totalOrders = $this->orders_model->getAllOrderRequest()->num_rows();
+		$pendingOrders = $this->orders_model->getOrderRequest()->num_rows();
+		$deliveredOrders = $this->orders_model->getDeliveredOrderRequest()->num_rows();
+
+
+ 		$data = array(
+ 			"page" => "dashboard-nav", 
+ 			'totalOrders' => $totalOrders,
+ 			'pendingOrders' => $pendingOrders,
+ 			'deliveredOrders' => $deliveredOrders
+ 		);
 
 		$this->load->view('includes/header',$data);
 		$this->load->view('dashboard/index');

@@ -15,8 +15,8 @@
         <div class="card text-center w-100">
           <div class="card-body">
             <h5 class="card-title">Orders</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h2 class="card-text"><?= $totalOrders ?></h2>
+            <!-- <a href="#" class="btn btn-primary w-50">View</a> -->
           </div>
         </div>
       </div>
@@ -24,8 +24,8 @@
         <div class="card text-center w-100">
           <div class="card-body">
             <h5 class="card-title">Pending</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h2 class="card-text"><?= $pendingOrders ?></h2>
+            <!-- <a href="#" class="btn btn-primary w-50">View</a> -->
           </div>
         </div>
       </div>
@@ -33,8 +33,8 @@
         <div class="card text-center w-100">
           <div class="card-body">
             <h5 class="card-title">Delivered</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h2 class="card-text"><?= $deliveredOrders ?></h2>
+            <!-- <a href="#" class="btn btn-primary w-50">View</a> -->
           </div>
         </div>
       </div>
@@ -47,26 +47,23 @@
         <div class="card text-center w-100">
           <div class="card-body">
             <h5 class="card-title">Income</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h2 class="card-text">₱<?= number_format((50 * $totalOrders),2) ?></h2>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card text-center w-100">
           <div class="card-body">
-            <h5 class="card-title">Pending</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h5 class="card-title">Receivables</h5>
+            <h2 class="card-text">₱<?= number_format((50 * $pendingOrders),2) ?></h2>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card text-center w-100">
           <div class="card-body">
-            <h5 class="card-title">Delivered</h5>
-            <h2 class="card-text">50</h2>
-            <a href="#" class="btn btn-primary w-50">View</a>
+            <h5 class="card-title">Collected</h5>
+            <h2 class="card-text">₱<?= number_format((50 * $deliveredOrders),2) ?></h2>
           </div>
         </div>
       </div>
