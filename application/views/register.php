@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Register</title>
+  <title>MyRx Registration</title>
 
 
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
