@@ -65,6 +65,27 @@
   </div>
 
 
+  <div id="deliveredModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delivered</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="orderId">
+          Tag as <b>Delivered</b> the order of <span id="customer"></span>?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" id="deliveredOrderBtn" class="btn btn-success" data-dismiss="modal">Yes</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div id="deleteModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 

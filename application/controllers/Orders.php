@@ -120,6 +120,18 @@ class Orders extends CI_Controller {
  		echo json_encode(array('status' => 'okay', 'message' => 'Pharmacy successfully added'));
  	}
 
+
+ 	public function delivered() {
+
+ 		$this->isLogged();
+
+ 		$id = $this->input->post('orderId');
+
+ 		$this->orders_model->delivered(array($id));
+
+ 		echo json_encode(array('status' => 'okay', 'message' => 'Successfully Tagged as Delivered'));
+ 	}
+
  	public function delete() {
 
  		$this->isLogged();

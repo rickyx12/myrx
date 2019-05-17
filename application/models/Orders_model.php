@@ -40,6 +40,12 @@ class Orders_model extends CI_Model {
 		$this->db->query($sql);		
 	}
 
+	public function delivered($data) {
+
+		$sql = "UPDATE myrx_order_request SET status = 'delivered' WHERE id = ?";
+		$this->db->query($sql,$data);	
+	}
+
 	public function delete($data) {
 		$sql = "DELETE FROM myrx_order_request WHERE id = ?";
 		$this->db->query($sql, $data);			
