@@ -35,7 +35,7 @@ class Account extends CI_Controller {
 
 			if(password_verify($password,$hashPass->password)) {
 				$this->session->id = $account->id;
-				redirect('Pharmacy/find');
+				redirect('Dashboard/index');
 			}else {
 				redirect('Account/login');
 			}
