@@ -89,7 +89,7 @@ class Orders extends CI_Controller {
 
  		foreach($orders as $order) {
 
- 			if($this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()) {
+ 			if($this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->num_rows() > 0) {
  				$pharmacy = $this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()->name;
  			}else {
  				$pharmacy = "";
@@ -102,7 +102,7 @@ class Orders extends CI_Controller {
  				"contact" => $this->utility_model->selectNow('myrx_customer','contact_number','id',$order->customer)->row()->contact_number,
  				"facebook" => $this->utility_model->selectNow('myrx_customer','facebook_url','id',$order->customer)->row()->facebook_url,
  				"address" => $this->utility_model->selectNow('myrx_customer','address','id',$order->customer)->row()->address,
- 				"pharmacy" => $this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()->name
+ 				"pharmacy" => $pharmacy
  				));
  		}
 
