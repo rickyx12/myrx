@@ -97,7 +97,7 @@ $("#checkAll").click(function(){
 
 $('#setPharmacyNowBtn').click(function() {
 
-	let customerId = $('#orderId').val();
+	let orderId = $('#orderId').val();
 	let pharmacyId = $('#pharmacyId').val();
 
 	let data = {
