@@ -84,7 +84,7 @@ class Orders extends CI_Controller {
  		$this->isLogged();
 
  		$ordersArr = [];
- 		$orders = $this->orders_model->getOrderRequest()->result();
+ 		$orders = $this->orders_model->getOrderRequest(date("Y-m-d"))->result();
  		$pharmacy = null;
 
  		foreach($orders as $order) {

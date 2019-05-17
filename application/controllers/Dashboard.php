@@ -12,9 +12,9 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 
-		$totalOrders = $this->orders_model->getAllOrderRequest()->num_rows();
-		$pendingOrders = $this->orders_model->getOrderRequest()->num_rows();
-		$deliveredOrders = $this->orders_model->getDeliveredOrderRequest()->num_rows();
+		$totalOrders = $this->orders_model->getAllOrderRequest(date("Y-m-d"))->num_rows();
+		$pendingOrders = $this->orders_model->getOrderRequest(date("Y-m-d"))->num_rows();
+		$deliveredOrders = $this->orders_model->getDeliveredOrderRequest(date("Y-m-d"))->num_rows();
 
 
  		$data = array(

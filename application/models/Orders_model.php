@@ -11,21 +11,27 @@ class Orders_model extends CI_Model {
 		$this->db->query($sql, $data);			
 	}
 
-	public function getAllOrderRequest() {
+	public function getAllOrderRequest($date) {
 
-		$sql = "SELECT id FROM myrx_order_request ORDER BY id DESC ";
+		$date1 = $this->db->escape_str($date);
+
+		$sql = "SELECT id FROM myrx_order_request WHERE details = '".$date1."' ORDER BY id DESC ";
 		return $this->db->query($sql);		
 	}
 
-	public function getOrderRequest() {
+	public function getOrderRequest($date) {
 
-		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE status = 'pending' ORDER BY id DESC";
+		$date1 = $this->db->escape_str($date);
+
+		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE status = 'pending' AND details = '".$date1."' ORDER BY id DESC";
 		return $this->db->query($sql);			
 	}
 
-	public function getDeliveredOrderRequest() {
+	public function getDeliveredOrderRequest($date) {
 
-		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE status = 'delivered' ORDER BY id DESC";
+		$date1 = $this->db->escape_str($date);
+
+		$sql = "SELECT id,customer,rx,message,details,pharmacy FROM myrx_order_request WHERE status = 'delivered' AND details = '".$date1."' ORDER BY id DESC";
 		return $this->db->query($sql);			
 	}
 
