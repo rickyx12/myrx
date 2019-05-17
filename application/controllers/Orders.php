@@ -102,7 +102,7 @@ class Orders extends CI_Controller {
  				"contact" => $this->utility_model->selectNow('myrx_customer','contact_number','id',$order->customer)->row()->contact_number,
  				"facebook" => $this->utility_model->selectNow('myrx_customer','facebook_url','id',$order->customer)->row()->facebook_url,
  				"address" => $this->utility_model->selectNow('myrx_customer','address','id',$order->customer)->row()->address,
- 				"pharmacy" => $pharmacy
+ 				"pharmacy" => $this->utility_model->selectNow('myrx_pharmacy','name','id',$order->pharmacy)->row()->name
  				));
  		}
 
