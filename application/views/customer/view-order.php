@@ -73,7 +73,7 @@
         </div>
         <div class="modal-body">
           <input type="hidden" id="pharmacyId">
-          <input type="hidden" id="customerId" value="<?= $customerId ?>">
+          <input type="hidden" id="orderId" value="<?= $data->id ?>">
           <p>Set <span id="pharmacyName"></span> as Vendor for <b><?= $customer ?></b>?</p>
         </div>
         <div class="modal-footer">

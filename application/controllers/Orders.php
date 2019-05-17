@@ -113,11 +113,10 @@ class Orders extends CI_Controller {
 
  		$this->isLogged();
 
- 		$customerId = $this->input->post('customerId');
+ 		$orderId = $this->input->post('orderId');
  		$pharmacyId = $this->input->post('pharmacyId');
 
- 		$this->orders_model->setPharmacy($pharmacyId,$customerId);
-
+ 		$this->orders_model->setPharmacy($pharmacyId,$orderId);
  		echo json_encode(array('status' => 'okay', 'message' => 'Pharmacy successfully added'));
  	}
 
