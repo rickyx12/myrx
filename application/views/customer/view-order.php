@@ -14,8 +14,8 @@
           <h3>Rx</h3>
           <input type="hidden" id="rxFile" value="<?= $data->rx ?>">
         </div>
-        <div class="form-group">
-          <img id="rxPreview" src="<?= base_url("uploads/rx/".$data->rx) ?>" width="500px" height="500px">
+        <div class="form-group" style="width: 500px; height: 500px;">
+          <img id="rxPreview" src="<?= base_url("uploads/rx/".$data->rx) ?>" style="width: 100%; height: 100%;">
         </div>
       </div>
       <div class="col-md-6">
