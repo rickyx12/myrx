@@ -22,8 +22,8 @@
         <div class="form-group">
           <label>Rx Preview</label>
         </div>
-        <div class="form-group">
-          <img id="rxPreview" width="500px" height="500px">
+        <div class="form-group" style="width: 500px; height: 500px;">
+          <img id="rxPreview" style="width: 100%; height: 100%;">
         </div>
       </div>
       <div class="col-md-6">
