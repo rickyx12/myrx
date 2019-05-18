@@ -53,8 +53,8 @@ class Customer extends CI_Controller {
                 $config['upload_path']          = './uploads/rx/';
                 $config['allowed_types']        = 'jpg|png';
                 $config['max_size']             = 25000;
-                $config['max_width']            = 500;
-                $config['max_height']           = 500;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
 
                 $this->load->library('upload', $config);
 
