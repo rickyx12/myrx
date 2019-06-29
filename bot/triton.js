@@ -134,7 +134,7 @@ function handlePostback(sender_psid, received_postback) {
 
     shareLocation(sender_psid);
   }else{
-    
+
     sendGetStarted(sender_psid);
   }
 
@@ -226,7 +226,7 @@ function shareLocation(recipientId) {
     let response;
  
     response = {
-      "text": "Please share your location by tapping the button below."
+      "text": "Please share your location by tapping the button below.",
       "quick_replies":[
         {
           content_type:"location"
