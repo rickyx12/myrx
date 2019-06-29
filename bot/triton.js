@@ -105,7 +105,7 @@ function handleMessage(sender_psid, received_message) {
       getFbId(sender_psid);
     }else {
 
-      console.log('no payload');
+      sendGetStarted(sender_psid);
     }  
 
 }
