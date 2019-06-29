@@ -122,7 +122,7 @@ function handlePostback(sender_psid, received_postback) {
     sendGetStarted(sender_psid);
   
   }else{
-    console.log('No payload');
+    sendGetStarted(sender_psid);
   }
 
 }
