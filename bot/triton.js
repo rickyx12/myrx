@@ -100,11 +100,11 @@ app.get('/triton/webhook', (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
 
-    let offendersPayload = received_message.quick_reply.payload;
+    // let offendersPayload = received_message.quick_reply.payload;
 
-    if(offendersPayload) {
+    if(received_message.quick_reply.payload) {
 
-      if(offendersPayload == "ILLEGAL_FISHING") {
+      if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
 
         shareLocation(sender_psid);
       }else {
