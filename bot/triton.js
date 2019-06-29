@@ -107,6 +107,7 @@ function handleMessage(sender_psid, received_message) {
 
       if(received_message.text) {
 
+        console.log("text: "+received_message.text);
         if(received_message.text == "ILLEGAL_FISHING") {
           knowMetadata(sender_psid);
         }else {
