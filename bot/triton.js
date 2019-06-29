@@ -108,8 +108,11 @@ function handleMessage(sender_psid, received_message) {
       if(received_message.text) {
 
         console.log("text: "+received_message.text);
+
         if(received_message.text == "Illegal Fishing") {
           knowMetadata(sender_psid);
+        }else if(received_message.text == "register") {
+          console.log("PSID: "+sender_psid);
         }else {
           sendTextOnly(sender_psid);
         }
