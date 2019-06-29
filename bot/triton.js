@@ -102,16 +102,16 @@ function handleMessage(sender_psid, received_message) {
 
     // let offendersPayload = received_message.quick_reply.payload;
 
-    if(received_message.quick_reply) {
+    // if(received_message.quick_reply) {
 
-      if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
+    //   if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
 
-        shareLocation(sender_psid);
-      }else {
-        console.log("not");
-      }
+    //     shareLocation(sender_psid);
+    //   }else {
+    //     console.log("not");
+    //   }
       
-    }else {
+    // }else {
 
       if(received_message.text) {
 
@@ -122,11 +122,20 @@ function handleMessage(sender_psid, received_message) {
 
         sendAttachments(sender_psid);
         console.log("Attachments only");
+        
+      }else if(received_message.quick_reply) {
+
+        if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
+
+          shareLocation(sender_psid);
+        }else {
+          console.log("not");
+        }        
       }else {
 
         console.log('handle message fallback');
       }
-    }  
+    // }  
 }
 
 // Handles messaging_postbacks events
