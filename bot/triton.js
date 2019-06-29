@@ -124,15 +124,15 @@ function handleMessage(sender_psid, received_message) {
 
       }else if(received_message.attachments) {
 
-        report = {
-          "attachment":{
-            "type":"image",
-            "payload":{
-              "url":received_message.attachments.payload.url,
-              "is_reusable":true
-            }
-          }
-        }
+        // report = {
+        //   "attachment":{
+        //     "type":"image",
+        //     "payload":{
+        //       "url":received_message.attachments.payload.url,
+        //       "is_reusable":true
+        //     }
+        //   }
+        // }
 
         sendAttachments(sender_psid);
         console.log(received_message.attachments);
