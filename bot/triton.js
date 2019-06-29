@@ -102,7 +102,7 @@ function handleMessage(sender_psid, received_message) {
 
     // let offendersPayload = received_message.quick_reply.payload;
 
-    if(received_message.quick_reply.payload) {
+    if(received_message.quick_reply) {
 
       if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
 
