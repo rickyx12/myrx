@@ -133,38 +133,8 @@ function sendGetStarted(recipientId) {
     let response;
  
     response = {
-      "attachment":{
-      "type":"template",
-      "payload":{
-      "template_type":"generic",
-      "elements":[
-          {
-            "title":"MyRx Medical Plaza",
-            "image_url":"http://pick-n-ride.000webhostapp.com/doctors.jpg",
-            "subtitle":"We can provide you the following services",
-              "buttons":[
-                {
-                  "type":"postback",
-                  "payload":"find_pharmacy",
-                  "title":"Find Pharmacy"
-                },
-                {
-                  "type":"postback",
-                  "payload":"find_doctor",
-                  "title":"Find Doctor"
-                },
-                {
-                  "type":"postback",
-                  "payload":"find_laboratory",
-                  "title":"Find Laboratory"
-                }
-              ]           
-          }
-        ]
-        }
-      }
+      "text": "Hello, Report a marine offender by sending a Video or Photo here."
     }
-
 
      return callSendAPI(recipientId,response);
 }
