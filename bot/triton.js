@@ -154,7 +154,7 @@ function sendTextOnly(recipientId) {
     let response;
  
     response = {
-      "text": "Text Only",
+      "text": "Identify the kind of violation you caught.",
       "quick_replies":[
         {
         "content_type":"text",
@@ -188,7 +188,29 @@ function sendAttachments(recipientId) {
     let response;
  
     response = {
-      "text": "With Attachments"
+      "text": "Identify the kind of violation you caught.",
+      "quick_replies":[
+        {
+        "content_type":"text",
+        "title":"Illegal Fishing",
+        "payload":"ILLEGAL_FISHING",
+        },
+        {
+        "content_type":"text",
+        "title":"Endangered Species",
+        "payload":"ENDANGERED_SPECIES",          
+        },
+        {
+        "content_type":"text",
+        "title":"Illegal Vessel",
+        "payload":"ILLEGAL_VESSEL",          
+        },
+        {
+        "content_type":"text",
+        "title":"Marine Waste",
+        "payload":"MARINE_WASTE",          
+        }
+      ]
     }
 
      return callSendAPI(recipientId,response);
