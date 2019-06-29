@@ -103,11 +103,16 @@ app.get('/triton/webhook', (req, res) => {
 // Handles messages eventss
 function handleMessage(sender_psid, received_message) {
 
-    console.log("RECEIVED: "+received_message);
+    let report;
+
 
       if(received_message.text) {
 
         console.log("text: "+received_message.text);
+
+        report = {
+          "text": received_message.text
+        }        
 
         if(received_message.text == "Illegal Fishing") {
           knowMetadata(sender_psid);
@@ -119,15 +124,15 @@ function handleMessage(sender_psid, received_message) {
 
       }else if(received_message.attachments) {
 
+        report = {
+          "text": received_message.attachments
+        }
+
         sendAttachments(sender_psid);
         console.log("Attachments only");
       }else {
 
         console.log('handle message fallback');
-      }
-
-      let report = {
-        "text": received_message.text
       }
 
       return sendReport(report);
