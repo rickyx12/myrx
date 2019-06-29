@@ -110,9 +110,11 @@ function handleMessage(sender_psid, received_message) {
       if(received_message.text) {
 
         sendTextOnly(sender_psid);
+        console.log("Text Only");
       }else if(received_message.attachments) {
 
         sendAttachments(sender_psid);
+        console.log("Attachments only");
       }else if(offendersPayload == "ILLEGAL_FISHING") {
 
         shareLocation(sender_psid);
