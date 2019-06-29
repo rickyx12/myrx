@@ -130,7 +130,11 @@ function handlePostback(sender_psid, received_postback) {
     
     sendGetStarted(sender_psid);
   
+  }else if(payload == 'ILLEGAL_FISHING') {
+
+    shareLocation(sender_psid);
   }else{
+    
     sendGetStarted(sender_psid);
   }
 
@@ -215,6 +219,24 @@ function sendAttachments(recipientId) {
 
      return callSendAPI(recipientId,response);
 }
+
+
+function shareLocation(recipientId) {
+
+    let response;
+ 
+    response = {
+      "text": "Please share your location by tapping the button below."
+      "quick_replies":[
+        {
+          content_type:"location"
+        }
+      ]
+    }
+
+    return callSendAPI(recipientId,response); 
+}
+
 
 function getFbId(recipientId) {
 
