@@ -44,7 +44,7 @@ app.post('/triton/webhook', (req, res) => {
 
 
       // Get the sender PSID
-      // let sender_psid = webhook_event.sender.id;
+      let sender_psid = webhook_event.sender.id;
       // console.log('Sender PSID: ' + sender_psid);
 
 
