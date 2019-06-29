@@ -105,7 +105,16 @@ function handleMessage(sender_psid, received_message) {
       getFbId(sender_psid);
     }else {
 
-      sendGetStarted(sender_psid);
+      if(received_message.text) {
+
+        sendTextOnly(sender_psid);
+      }else if(received_message.attachments) {
+
+        sendAttachments(sender_psid);
+      }else {
+
+        console.log('handle message fallback');
+      }
     }  
 
 }
@@ -133,13 +142,35 @@ function sendGetStarted(recipientId) {
     let response;
  
     response = {
-      "text": "Hello, Report a marine offender by sending a Video or Photo here."
+      "text": "Hello, Report a marine offender by sending a Video or Photo to me."
     }
 
      return callSendAPI(recipientId,response);
 }
 
 
+function sendTextOnly(recipientId) {
+
+    let response;
+ 
+    response = {
+      "text": "Text Only"
+    }
+
+     return callSendAPI(recipientId,response);
+}
+
+
+function sendAttachments(recipientId) {
+
+    let response;
+ 
+    response = {
+      "text": "With Attachments"
+    }
+
+     return callSendAPI(recipientId,response);
+}
 
 function getFbId(recipientId) {
 
