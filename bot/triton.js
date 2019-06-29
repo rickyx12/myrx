@@ -117,7 +117,7 @@ function handleMessage(sender_psid, received_message) {
       }
     }  
 
-    console.log("payload"+received_message.quick_replies);
+    console.log("payload"+received_message.quick_reply);
 }
 
 // Handles messaging_postbacks events
