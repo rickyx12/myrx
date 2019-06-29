@@ -107,8 +107,12 @@ function handleMessage(sender_psid, received_message) {
 
       if(received_message.text) {
 
-        sendTextOnly(sender_psid);
-        console.log("Text Only");
+        if(received_message.text == "ILLEGAL_FISHING") {
+          knowMetadata(sender_psid);
+        }else {
+          sendTextOnly(sender_psid);
+        }
+
       }else if(received_message.attachments) {
 
         sendAttachments(sender_psid);
