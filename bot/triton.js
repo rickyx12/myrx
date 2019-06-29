@@ -115,8 +115,11 @@ function handleMessage(sender_psid, received_message) {
         console.log("Attachments only");
       }else if(received_message.quick_reply) {
 
-        shareLocation(sender_psid);
-        console.log("Location Shared");
+        if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
+          shareLocation(sender_psid);
+        }else {
+          console.log("Location Shared");
+        }
       }else {
 
         console.log('handle message fallback');
