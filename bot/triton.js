@@ -108,7 +108,7 @@ function handleMessage(sender_psid, received_message) {
       if(received_message.text) {
 
         console.log("text: "+received_message.text);
-        if(received_message.text == "ILLEGAL_FISHING") {
+        if(received_message.text == "Illegal Fishing") {
           knowMetadata(sender_psid);
         }else {
           sendTextOnly(sender_psid);
@@ -201,7 +201,7 @@ function sendAttachments(recipientId) {
     let response;
  
     response = {
-      "text": "Identify the kind of violation you caught.",
+      "text": "Tell me what violation you caught by tapping on the selection below.",
       "quick_replies":[
         {
         "content_type":"text",
