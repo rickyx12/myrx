@@ -104,7 +104,13 @@ function handleMessage(sender_psid, received_message) {
 
     if(offendersPayload) {
 
-      console.log("HAS PAYLOAD");
+      if(offendersPayload == "ILLEGAL_FISHING") {
+
+        shareLocation(sender_psid);
+      }else {
+        console.log("not");
+      }
+      
     }else {
 
       if(received_message.text) {
@@ -120,9 +126,7 @@ function handleMessage(sender_psid, received_message) {
 
         console.log('handle message fallback');
       }
-    } 
-
-    console.log("PAYLOD: "+offendersPayload); 
+    }  
 }
 
 // Handles messaging_postbacks events
