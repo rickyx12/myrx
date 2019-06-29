@@ -51,9 +51,12 @@ app.post('/triton/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function.
       if (webhook_event.message) {
+
         handleMessage(sender_psid, webhook_event.message);        
+        console.log("message received");
       } else if (webhook_event.postback) {
         handlePostback(sender_psid, webhook_event.postback);
+        console.log("postback received");
       }
 
     });
@@ -127,9 +130,6 @@ function handlePostback(sender_psid, received_postback) {
     
     sendGetStarted(sender_psid);
   
-  }else if(payload == 'ILLEGAL_FISHING') {
-
-    shareLocation(sender_psid);
   }else{
 
     sendGetStarted(sender_psid);
