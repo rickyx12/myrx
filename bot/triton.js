@@ -69,7 +69,7 @@ app.post('/triton/webhook', (req, res) => {
 
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
+app.get('/triton/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
   let VERIFY_TOKEN = "ricardo123"
