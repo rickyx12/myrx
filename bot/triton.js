@@ -102,21 +102,15 @@ function handleMessage(sender_psid, received_message) {
 
     let offendersPayload = received_message.quick_reply.payload;
 
-    if(received_message.text == 'register') {
+    if(offendersPayload) {
 
-      getFbId(sender_psid);
+      console.log("HAS PAYLOAD");
     }else {
 
       if(received_message.text) {
 
         sendTextOnly(sender_psid);
         console.log("Text Only");
-
-        if(offendersPayload == "ILLEGAL_FISHING") {
-
-        }else {
-          console.log("text only no payload");
-        }
 
       }else if(received_message.attachments) {
 
