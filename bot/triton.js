@@ -100,12 +100,6 @@ app.get('/triton/webhook', (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
 
-    let offendersPayload = received_message.quick_reply.payload;
-
-    if(received_message.text == 'register') {
-
-      getFbId(sender_psid);
-    }else {
 
       if(received_message.text) {
 
@@ -117,14 +111,20 @@ function handleMessage(sender_psid, received_message) {
 
         sendAttachments(sender_psid);
         console.log("Attachments only");
+      }else if(received_message.quick_reply) {
+
+        if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
+
+          shareLocation(sender_psid);
+        }else {
+          console.log("payload failed");
+        }
+
       }else {
 
         console.log('handle message fallback');
       }
     } 
-
-    console.log("PAYLOD: "+offendersPayload); 
-}
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
