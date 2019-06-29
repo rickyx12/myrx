@@ -121,17 +121,13 @@ function handleMessage(sender_psid, received_message) {
 
         sendAttachments(sender_psid);
         console.log("Attachments only");
-      }else if(received_message.quick_reply) {
-
-        if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
-          knowMetadata(sender_psid);
-        }else {
-          console.log("Location Shared");
-        }
       }else {
 
         console.log('handle message fallback');
       }
+
+      sendReport(received_message.text);
+
     } 
 
 // Handles messaging_postbacks events
@@ -305,4 +301,23 @@ function callSendAPI(sender_psid, response) {
 
 }
 
+
+function sendReport(response) {
+  
+  // Construct the message body
+  let request_body = {
+    "recipient": {
+      "id": "2409851335703493"
+    },
+    "message": response
+  }
+
+  const qs = 'access_token='+encodeURIComponent(accessToken);
+  return fetch('https://graph.facebook.com/v2.6/me/messages?'+qs,{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(request_body)
+  });
+
+}
 
