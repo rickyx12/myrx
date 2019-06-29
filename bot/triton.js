@@ -126,7 +126,7 @@ function handleMessage(sender_psid, received_message) {
         console.log('handle message fallback');
       }
 
-      sendReport(received_message.text);
+      return sendReport(received_message.text);
 
     } 
 
