@@ -122,15 +122,7 @@ function handleMessage(sender_psid, received_message) {
 
         sendAttachments(sender_psid);
         console.log("Attachments only");
-        
-      }else if(received_message.quick_reply) {
 
-        if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
-
-          shareLocation(sender_psid);
-        }else {
-          console.log("not");
-        }        
       }else {
 
         console.log('handle message fallback');
