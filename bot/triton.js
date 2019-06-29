@@ -116,7 +116,7 @@ function handleMessage(sender_psid, received_message) {
       }else if(received_message.quick_reply) {
 
         if(received_message.quick_reply.payload == "ILLEGAL_FISHING") {
-          shareLocation(sender_psid);
+          knowMetadata(sender_psid);
         }else {
           console.log("Location Shared");
         }
@@ -162,7 +162,7 @@ function sendTextOnly(recipientId) {
     let response;
  
     response = {
-      "text": "Identify the kind of violation you caught.",
+      "text": "Tell me what violation you caught by tapping on the selection below.",
       "quick_replies":[
         {
         "content_type":"text",
@@ -225,17 +225,12 @@ function sendAttachments(recipientId) {
 }
 
 
-function shareLocation(recipientId) {
+function knowMetadata(recipientId) {
 
     let response;
  
     response = {
-      "text": "Please share your location by tapping the button below.",
-      "quick_replies":[
-        {
-          content_type:"location"
-        }
-      ]
+      "text": "Please provide me the place and time you caught the illegal act",
     }
 
     return callSendAPI(recipientId,response); 
