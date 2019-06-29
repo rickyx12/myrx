@@ -111,13 +111,17 @@ function handleMessage(sender_psid, received_message) {
 
         sendTextOnly(sender_psid);
         console.log("Text Only");
+
+        if(offendersPayload == "ILLEGAL_FISHING") {
+
+        }else {
+          console.log("text only no payload");
+        }
+
       }else if(received_message.attachments) {
 
         sendAttachments(sender_psid);
         console.log("Attachments only");
-      }else if(offendersPayload == "ILLEGAL_FISHING") {
-
-        shareLocation(sender_psid);
       }else {
 
         console.log('handle message fallback');
