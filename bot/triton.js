@@ -120,7 +120,9 @@ function handleMessage(sender_psid, received_message) {
 
         console.log('handle message fallback');
       }
-    }  
+    } 
+
+    console.log("PAYLOD: "+offendersPayload); 
 }
 
 // Handles messaging_postbacks events
