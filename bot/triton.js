@@ -100,6 +100,7 @@ app.get('/triton/webhook', (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
 
+    console.log("RECEIVED: "+received_message);
 
       if(received_message.text) {
 
