@@ -126,15 +126,19 @@ function handleMessage(sender_psid, received_message) {
 
       }else if(received_message.attachments) {
 
-        // report = {
-        //   "attachment":{
-        //     "type":"image",
-        //     "payload":{
-        //       "url":received_message.attachments.payload.url,
-        //       "is_reusable":true
-        //     }
-        //   }
-        // }
+        if(received_message.attachments[0].type == "image") {
+          report = {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":received_message.attachments[0].payload.url,
+                "is_reusable":true
+              }
+            }
+          }
+        }else {
+          console.log("undefined");
+        }
 
         sendAttachments(sender_psid);
         console.log("test => "+received_message.attachments[0].payload.url);
