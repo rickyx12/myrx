@@ -127,6 +127,7 @@ function handleMessage(sender_psid, received_message) {
       }else if(received_message.attachments) {
 
         if(received_message.attachments[0].type == "image") {
+
           report = {
             "attachment":{
               "type":"image",
@@ -136,6 +137,11 @@ function handleMessage(sender_psid, received_message) {
               }
             }
           }
+        
+        }else if(received_message.attachments[0].type == "video") {
+
+          console.log("Video URL: "+received_message.attachments[0].payload.url);
+
         }else {
           console.log("undefined");
         }
