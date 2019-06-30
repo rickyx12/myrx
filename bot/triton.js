@@ -141,7 +141,7 @@ function handleMessage(sender_psid, received_message) {
         }
 
         sendAttachments(sender_psid);
-        console.log("test => "+received_message.attachments[0].payload.url);
+        console.log("test => "+received_message.attachments[0].type);
       }else {
 
         console.log('handle message fallback');
