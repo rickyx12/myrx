@@ -140,7 +140,15 @@ function handleMessage(sender_psid, received_message) {
         
         }else if(received_message.attachments[0].type == "video") {
 
-          console.log("Video URL: "+received_message.attachments[0].payload.url);
+          report = {
+            "attachment":{
+              "type":"video",
+              "payload":{
+                "url":received_message.attachments[0].payload.url,
+                "is_reusable":true
+              }
+            }
+          }
 
         }else {
           console.log("undefined");
